@@ -1,10 +1,9 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const port =  5000; 
-const connectdb=require('./config/connect')
-const User=require('./models/user')
-require('dotenv').config({path:'./config/.env'})
-const app = express();
+const express = require('express')
+const connectdb = require('./config/connect')
+const app = express()
+const port = 5000
+require("dotenv").config({path:"./config/.env"})
+connectdb()
 const cors = require("cors");
 
 const corsOptions = {
@@ -13,17 +12,13 @@ const corsOptions = {
    optionSuccessStatus: 200,
 }
 
-app.use(cors(corsOptions))
-app.use(express.json());
 app.use("/uploads",express.static(__dirname+"/uploads"))
+app.use(cors(corsOptions))
+app.use(express.json())
 
 //routes
-//app.use("/api/product",require('./Routes/productRoute'))
-//app.use("/api/user",require('./Routes/userRoute'))
+app.use("/api/product",require("./Routes/productRoute"))
 
 
 
-
-
-connectdb()
-app.listen(port,(err)=>{err?console.log(err):console.log("server running");})
+app.listen(port, (err) => err ? console.log(err) : console.log(`app listening on port ${port}!`))
