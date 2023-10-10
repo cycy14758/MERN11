@@ -18,7 +18,7 @@ app.use(express.json())
 
 //routes
 app.use("/api/product",require("./Routes/productRoute"))
-
+app.use("/api/user",require("./Routes/userRoute"))
 
 
 app.listen(port, (err) => err ? console.log(err) : console.log(`app listening on port ${port}!`))
