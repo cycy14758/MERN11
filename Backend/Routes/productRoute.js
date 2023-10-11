@@ -1,14 +1,16 @@
 const express = require('express');
 const product = require('../models/product'); // Make sure to use PascalCase for model names
+const upload=require('../utils/multer')
 
 const router = express.Router();
 
 // Add new product
-router.post("/", async (req, res) => {
+router.post("/", upload("products").single("file"),async (req, res) => {
     try {
+        const url =` ${req.protocol}://${req.get("host")}/${req.file.path}`
         // Create a new product instance using the request body
         const newProduct = new product(req.body);
-
+        newProduct.img=url
         // Save the new product to the database
         const savedProduct = await newProduct.save();
 
@@ -30,9 +32,13 @@ router.get('/', async (req, res) => {
     }
   });
 //put
-  router.put('/:id', async (req, res) => {
-    try {
+  router.put('/:id', upload("products").single("file"), async (req, res) => {
+    try {     
        const updatedproduct = await product.findByIdAndUpdate(req.params.id, {...req.body});
+       if (req.file){
+        const url =` ${req.protocol}://${req.get("host")}/${req.file.path}`
+        updatedproduct.img=url
+       }
        res.send(updatedproduct);
      } 
      catch (error) {
