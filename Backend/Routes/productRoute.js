@@ -1,11 +1,11 @@
 const express = require('express');
 const product = require('../models/product'); // Make sure to use PascalCase for model names
 const upload=require('../utils/multer')
-
+const isAuth=require('../middlewares/Autho')
 const router = express.Router();
 
 // Add new product
-router.post("/", upload("products").single("file"),async (req, res) => {
+router.post("/", upload("products").single("file"),isAuth(),async (req, res) => {
     try {
         const url =` ${req.protocol}://${req.get("host")}/${req.file.path}`
         // Create a new product instance using the request body

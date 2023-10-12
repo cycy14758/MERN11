@@ -4,11 +4,15 @@ const { registerCheck,validator,loginCheck } = require('../middlewares/validator
 const bcrypt = require('bcrypt')
 const router = express.Router(); 
 const jwt = require("jsonwebtoken")
-
+const isAuth=require("../middlewares/Autho")
+const upload=require('../utils/multer')
 // Add new product
-router.post("/register",registerCheck(), validator, async (req, res) => {
+router.post("/register",upload("users").single("file"),registerCheck(), validator, async (req, res) => {
     const { email, password, role } = req.body
     try {
+        const url =` ${req.protocol}://${req.get("host")}/${req.file.path}`
+        const newusers = new user(req.body);
+        newusers.img=url
         if (role=="Admin") {
             return res.status(401).send({ msg: "not auth !!" })
         }
@@ -32,7 +36,8 @@ router.post("/register",registerCheck(), validator, async (req, res) => {
 //login user 
 router.post('/login', loginCheck(), validator, async (req, res) => {
     const { email, password } = req.body
-    try {
+    try { 
+        
         const existUser = await user.findOne({ email })
         if (!existUser) {
             return res.status(400).send({ msg: "bad credential !!" })
@@ -50,6 +55,13 @@ router.post('/login', loginCheck(), validator, async (req, res) => {
         console.log(error);
         res.status(400).send({ msg: error.message })
 }})
+// get current user ==>private
+router.get("/current",isAuth(), (req, res) => {
+  
+   
+    res.send({User:req.user} );
+   
+})
 //get
 router.get('/', async (req, res) => {
     try {
@@ -60,8 +72,11 @@ router.get('/', async (req, res) => {
     }
   });
 //put
-  router.put('/:id', async (req, res) => {
+  router.put('/:id',upload("users").single("file"), async (req, res) => {
     try {
+        const url =` ${req.protocol}://${req.get("host")}/${req.file.path}`
+        const newusers = new user(req.body);
+     newusers.img=url
        const updateduser = await user.findByIdAndUpdate(req.params.id, {...req.body});
        res.send(updateduser);
      } 
