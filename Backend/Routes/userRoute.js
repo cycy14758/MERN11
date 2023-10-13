@@ -6,6 +6,7 @@ const router = express.Router();
 const jwt = require("jsonwebtoken")
 const isAuth=require("../middlewares/Autho")
 const upload=require('../utils/multer')
+const isAdmin=require("../middlewares/Admin")
 // Add new product
 router.post("/register",upload("users").single("file"),registerCheck(), validator, async (req, res) => {
     const { email, password, role } = req.body
@@ -72,7 +73,7 @@ router.get('/', async (req, res) => {
     }
   });
 //put
-  router.put('/:id',upload("users").single("file"), async (req, res) => {
+  router.put('/:id',upload("users").single("file"),isAuth(), async (req, res) => {
     try {
         const url =` ${req.protocol}://${req.get("host")}/${req.file.path}`
         const newusers = new user(req.body);
@@ -84,11 +85,11 @@ router.get('/', async (req, res) => {
     console.log(error);
      }
    });
-router.delete('/:id', async (req, res) => {
-    const { id } = req.params;
+router.delete('/', isAuth(),isAdmin,async (req, res) => {
+   
   
     try {
-      result=await user.findByIdAndRemove(id);
+      result=await user.deleteMany();
       res.send( result );
     } catch (error) {
    

@@ -5,7 +5,7 @@ const isAuth=require('../middlewares/Autho')
 const router = express.Router();
 
 // Add new product
-router.post("/", upload("products").single("file"),isAuth(),async (req, res) => {
+router.post("/", upload("products").single("file"), isAuth(),async (req, res) => {
     try {
         const url =` ${req.protocol}://${req.get("host")}/${req.file.path}`
         // Create a new product instance using the request body
@@ -25,7 +25,7 @@ router.post("/", upload("products").single("file"),isAuth(),async (req, res) => 
 //get
 router.get('/', async (req, res) => {
     try {
-      const products= await product.find();
+      const products= await product.find().populate("seller");
       res.send(products);
     } catch (error) {
      console.log(error);
