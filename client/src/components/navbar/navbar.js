@@ -35,6 +35,18 @@ function Navbar() {
         <li className="nav-item">
           <Link to={"/login"}   > <button type="button" class="btn btn-warning">login</button></Link>
         </li>
+        <li className="nav-item">
+          <Link to={"/Addproduct"}   > <button type="button" class="btn btn-warning">Add product</button></Link>
+        </li>
+        <li className="nav-item">
+          <Link to={"/Editprofile"}   > <button type="button" class="btn btn-warning">edit profile</button></Link>
+        </li>
+        <li className="nav-item">
+          <Link to={"/Editproduct"}   > <button type="button" class="btn btn-warning">edit product</button></Link>
+        </li>
+        <li className="nav-item">
+          <Link to={"/Userlist"}   > <button type="button" class="btn btn-warning">Userlist</button></Link>
+        </li>
       </ul>
     </div>
   </div>

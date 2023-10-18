@@ -19,7 +19,11 @@ function Register() {
           type="password"
           
         />
-      </div>
+        <label htmlFor="passw "> photo</label>
+        <input
+          type="file"/>
+
+          </div>
       <div>
         <button type="submit">Register</button>
       </div>

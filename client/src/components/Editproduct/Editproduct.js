@@ -1,12 +1,12 @@
 import React from 'react'
 
-function Editprofil() {
+function Editproduct() {
   return (
     <div>
-    <h2>Edit Profile</h2>
+    <h2>Edit product</h2>
     <form >
       <div>
-        <label htmlFor="username">Username:</label>
+        <label htmlFor="username">title:</label>
         <input
           type="text"
           
@@ -14,14 +14,14 @@ function Editprofil() {
         />
       </div>
       <div>
-        <label htmlFor="email">Email:</label>
+        <label htmlFor="email">description:</label>
         <input
           type="email"
           
         />
       </div>
       <div>
-        <label htmlFor="bio">Bio:</label>
+        <label htmlFor="bio">price:</label>
         <textarea
           name="bio"
         
@@ -33,4 +33,4 @@ function Editprofil() {
   )
 }
 
-export default Editprofil
+export default Editproduct

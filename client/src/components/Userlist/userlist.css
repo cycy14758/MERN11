@@ -1,0 +1,43 @@
+/* Style for the User List container */
+div {
+    text-align: center;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    margin: 0 auto;
+  }
+  
+  /* Style for the heading */
+  h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for the list of users */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Style for each user item */
+  li {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  
+  /* Style for user names */
+  li strong {
+    font-size: 18px;
+    color: #007bff;
+  }
+  
+  /* Style for user emails */
+  li p {
+    color: #666;
+  }
+  
