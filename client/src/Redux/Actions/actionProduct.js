@@ -12,7 +12,7 @@ export const getAllProducts = () => async (dispatch) => {
       payload: res.data
      
     });
-   
+   console.log(res.data);
   }
 
   catch (err) {

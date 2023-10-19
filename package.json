@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev":"concurrently \"cd client && npm start\" \"cd backend && npm run back\"",
+    "dev":"concurrently \"cd client && npm start\" \"cd Backend && npm run Back\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

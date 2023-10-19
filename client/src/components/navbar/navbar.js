@@ -30,22 +30,22 @@ function Navbar() {
         <Link  to={`/Register`}> <button type="button" class="btn btn-warning">Register</button></Link>
         </li>
         <li className="nav-item">
-        <Link  to={"/Profil"}> <button type="button" class="btn btn-warning">Profil</button></Link>
+        <Link  to={"/Profil"}> <button type="button" className="btn btn-warning">Profil</button></Link>
         </li>
         <li className="nav-item">
-          <Link to={"/login"}   > <button type="button" class="btn btn-warning">login</button></Link>
+          <Link to={"/login"}   > <button type="button" className="btn btn-warning">login</button></Link>
         </li>
         <li className="nav-item">
-          <Link to={"/Addproduct"}   > <button type="button" class="btn btn-warning">Add product</button></Link>
+          <Link to={"/Addproduct"}   > <button type="button" className="btn btn-warning">Add product</button></Link>
         </li>
         <li className="nav-item">
-          <Link to={"/Editprofile"}   > <button type="button" class="btn btn-warning">edit profile</button></Link>
+          <Link to={"/Editprofile"}   > <button type="button" className="btn btn-warning">edit profile</button></Link>
         </li>
         <li className="nav-item">
-          <Link to={"/Editproduct"}   > <button type="button" class="btn btn-warning">edit product</button></Link>
+          <Link to={"/Editproduct"}   > <button type="button" className="btn btn-warning">edit product</button></Link>
         </li>
         <li className="nav-item">
-          <Link to={"/Userlist"}   > <button type="button" class="btn btn-warning">Userlist</button></Link>
+          <Link to={"/Userlist"}   > <button type="button" className="btn btn-warning">Userlist</button></Link>
         </li>
       </ul>
     </div>

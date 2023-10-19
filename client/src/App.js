@@ -20,8 +20,8 @@ function App() {
      dispatch(getAllProducts())
  
   }, [])
-    const products=useSelector(state=>state.products)
-    console.log(products);
+    const Products=useSelector(state=>state.productReducer.products)
+    console.log(Products);
   return (
     <div>
       <Routes>

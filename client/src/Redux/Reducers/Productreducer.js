@@ -13,6 +13,7 @@ const initialstate={
     switch(action.type){
      case GET_ALLPRODUCTS_SUCCESS :
         return {...state,products:action.payload}
+        
             
         default:
             return state
