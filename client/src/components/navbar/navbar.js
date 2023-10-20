@@ -1,7 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 
 function Navbar() {
+  const token=localStorage.getItem("token")
+
+  console.log(user);
+console.log(token);
   return (
     <div>
 
@@ -26,15 +31,15 @@ function Navbar() {
         <li className="nav-item">
        <Link  to={`/`}> <button type="button" class="btn btn-warning">home</button></Link>
         </li>
-        <li className="nav-item">
+        {!token?<li className="nav-item">
         <Link  to={`/Register`}> <button type="button" class="btn btn-warning">Register</button></Link>
-        </li>
-        <li className="nav-item">
+        </li>:null}
+       {token ? <li className="nav-item">
         <Link  to={"/Profil"}> <button type="button" className="btn btn-warning">Profil</button></Link>
-        </li>
-        <li className="nav-item">
+        </li>:null}
+       { !token ?<li className="nav-item">
           <Link to={"/login"}   > <button type="button" className="btn btn-warning">login</button></Link>
-        </li>
+        </li>:null}
         <li className="nav-item">
           <Link to={"/Addproduct"}   > <button type="button" className="btn btn-warning">Add product</button></Link>
         </li>
@@ -44,9 +49,9 @@ function Navbar() {
         <li className="nav-item">
           <Link to={"/Editproduct"}   > <button type="button" className="btn btn-warning">edit product</button></Link>
         </li>
-        <li className="nav-item">
+      { token&& <li className="nav-item">
           <Link to={"/Userlist"}   > <button type="button" className="btn btn-warning">Userlist</button></Link>
-        </li>
+        </li>}
       </ul>
     </div>
   </div>
