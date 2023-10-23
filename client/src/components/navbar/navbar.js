@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 function Navbar() {
   const token=localStorage.getItem("token")
 
-  console.log(user);
+
 console.log(token);
   return (
     <div>
@@ -28,9 +28,9 @@ console.log(token);
     </button>
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav">
-        <li className="nav-item">
+       {token ?<li className="nav-item">
        <Link  to={`/`}> <button type="button" class="btn btn-warning">home</button></Link>
-        </li>
+        </li> :null}
         {!token?<li className="nav-item">
         <Link  to={`/Register`}> <button type="button" class="btn btn-warning">Register</button></Link>
         </li>:null}
@@ -40,9 +40,9 @@ console.log(token);
        { !token ?<li className="nav-item">
           <Link to={"/login"}   > <button type="button" className="btn btn-warning">login</button></Link>
         </li>:null}
-        <li className="nav-item">
+       { token ?<li className="nav-item">
           <Link to={"/Addproduct"}   > <button type="button" className="btn btn-warning">Add product</button></Link>
-        </li>
+        </li>:null}
         <li className="nav-item">
           <Link to={"/Editprofile"}   > <button type="button" className="btn btn-warning">edit profile</button></Link>
         </li>

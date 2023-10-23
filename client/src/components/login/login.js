@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './login.css';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../Redux/Actions/actionUser';
+import Alert from '../Alert/Alert';
 
 function Login() {
 
@@ -16,7 +17,7 @@ function Login() {
   const handleSubmit = (e) => {
   e.preventDefault()
     disptach(login({email,password}, navigate))
-console.log("object");
+
       };
 
   return (
@@ -27,6 +28,7 @@ console.log("object");
         <input type="text"  onChange={(e) => setemail(e.target.value)} />
         <label htmlFor="password">Password:</label>
         <input type="password"  onChange={(e) => setpassword(e.target.value)} />
+        <Alert/>
         <button type="submit" onClick={handleSubmit}>
           Login
         </button>

@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import Home from './components/Home/Home';
 import "../node_modules/bootstrap/dist/css/bootstrap.css"
@@ -13,6 +13,7 @@ import Userlist from './components/Userlist/userlist';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getAllProducts } from './Redux/Actions/actionProduct';
+import UserRoute from './components/privateRoute/UserRoute';
 
 function App() {
   const dispatch=useDispatch()
@@ -21,7 +22,8 @@ function App() {
  
   }, [])
     const Products=useSelector(state=>state.productReducer.products)
-    console.log(Products);
+    const err=useSelector(state=>state.userReducer.errors)
+    console.log(err);
   return (
     <div>
       <Routes>
@@ -29,7 +31,7 @@ function App() {
       <Route path='/login' element={<Login/>}/>
       <Route path='/Register' element={<Register/>}/>
       <Route path='/Profil' element={<Profil/>}/>
-      <Route path='/addproduct' element={<Addproduct/>}/>
+      <Route path='/addproduct' element={<UserRoute> <Addproduct/></UserRoute> }/>
       <Route path='/editprofile' element={<Editprofil/>}/>
       <Route path='/editproduct' element={<Editproduct/>}/>
       <Route path='/Userlist' element={<Userlist/>}/>
